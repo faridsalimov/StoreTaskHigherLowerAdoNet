@@ -1,0 +1,60 @@
+﻿<Window x:Class="StoreTaskAdoNet.Domain.Views.Products"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreTaskAdoNet.Domain.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Products" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <ListView ItemsSource="{Binding AllProducts}" SelectedItem="{Binding SelectedProduct,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectProductCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="220">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" FontSize="15" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Canvas>
+                <Label Content="Name" FontSize="25" FontWeight="Bold" Canvas.Left="20" Canvas.Top="20"/>
+                <TextBox Width="350" Height="30" Canvas.Left="110" Canvas.Top="30" Text="{Binding ProductName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="Price" FontSize="25" FontWeight="Bold" Canvas.Left="20" Canvas.Top="85"/>
+                <TextBox Width="350" Height="30" Canvas.Left="110" Canvas.Top="95" Text="{Binding ProductPrice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="Quantity" FontSize="25" FontWeight="Bold" Canvas.Left="20" Canvas.Top="145"/>
+                <TextBox Width="307" Height="30" Canvas.Left="153" Canvas.Top="155" Text="{Binding ProductQuantity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Content="Description" FontSize="25" FontWeight="Bold" Canvas.Left="20" Canvas.Top="205"/>
+                <TextBox Width="273" Height="30" Canvas.Left="187" Canvas.Top="215" Text="{Binding ProductDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                
+                <Label Content="Discount" FontSize="25" FontWeight="Bold" Canvas.Left="20" Canvas.Top="265"/>
+                <TextBox Width="310" Height="30" Canvas.Left="150" Canvas.Top="275" Text="{Binding ProductDiscount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button Content="{Binding ProductMode}" Width="350" Height="60" Canvas.Left="90" Canvas.Top="340" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Command="{Binding IcProductCommand}"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>

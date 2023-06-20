@@ -1,0 +1,48 @@
+﻿<Window x:Class="StoreTaskAdoNet.Domain.Views.OrderProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreTaskAdoNet.Domain.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Order Product" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel>
+                <Label Content="Name:" FontSize="20" FontWeight="Bold"/>
+                <Label Content="{Binding ProductInfo.Name}" FontSize="20" Padding="20"/>
+
+                <Label Content="Price:" FontSize="20" FontWeight="Bold"/>
+                <Label Content="{Binding ProductInfo.Price}" FontSize="20" Padding="20"/>
+
+                <Label Content="Discount:" FontSize="20" FontWeight="Bold"/>
+                <Label Content="{Binding ProductInfo.Discount}" FontSize="20" Padding="20"/>
+
+                <Label Content="Quantity:" FontSize="20" FontWeight="Bold"/>
+                <Label Content="{Binding ProductInfo.Quantity}" FontSize="20" Padding="20"/>
+
+                <Label Content="Description:" FontSize="20" FontWeight="Bold"/>
+                <Label Content="{Binding ProductInfo.Description}" FontSize="20" Padding="20"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Canvas>
+                <Label Content="Amount" FontSize="25" FontWeight="Bold" Canvas.Left="10" Canvas.Top="19" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBox Width="259" Height="30" Canvas.Left="131" Canvas.Top="30" Text="{Binding Amount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Content="Username" FontSize="25" FontWeight="Bold" Canvas.Left="10" Canvas.Top="79" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBox Width="235" Height="30" Canvas.Left="155" Canvas.Top="90" Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button Content="Order" Width="350" Height="45" Canvas.Left="25" Canvas.Top="140" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Command="{Binding OrderCommand}"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>
